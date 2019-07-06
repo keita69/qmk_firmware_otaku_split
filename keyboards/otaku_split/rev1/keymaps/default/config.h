@@ -17,3 +17,33 @@
 #pragma once
 
 // place overrides here
+
+/* Use I2C or Serial, not both */
+
+#define USE_SERIAL
+// #define USE_I2C
+
+/* Select hand configuration */
+
+// #define MASTER_LEFT
+#define MASTER_RIGHT
+// #define EE_HANDS
+
+
+#undef RGBLED_NUM
+#define RGBLIGHT_ANIMATIONS
+#define RGBLED_NUM 24
+#define RGBLIGHT_HUE_STEP 10
+#define RGBLIGHT_SAT_STEP 17
+#define RGBLIGHT_VAL_STEP 17
+
+// Configuring mouse keys
+// https://docs.qmk.fm/#/feature_mouse_keys
+#define MOUSEKEY_DELAY	1
+#define MOUSEKEY_INTERVAL	25
+#define MOUSEKEY_MAX_SPEED	20
+#define MOUSEKEY_TIME_TO_MAX 30
+
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
+#define NO_ACTION_TAPPING
