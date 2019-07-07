@@ -18,6 +18,9 @@
 #include <stdio.h>
 #include <string.h>
 
+static bool lower_pressed = false; 
+static bool raise_pressed = false; 
+
 extern keymap_config_t keymap_config;
 
 bool is_alt_tab_active = false;
@@ -77,7 +80,7 @@ enum custom_keycodes {
 #define ALTSUP LALT(LSFT(KC_UP))   // ALT+Shift+Up
 #define ALTSDN LALT(LSFT(KC_DOWN)) // ALT+Shift+Down
 #define ALT_SP LALT(KC_SPC)        // ALT+Space
-#define T(CURSOR,KC_SPC)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /* Qwerty
      * ,----------------------------------------------------------------------------------------------------------------------.
@@ -89,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+--------------------+------+------+------+------+------+------+------+------|
      * | Shift|   Z  |   X  |   C  |   V  |   B  ||||||||||||||||||||||AltSpc|   N  |   M  |   ,  |   .  |   /  | ---- | Shift|
      * |-------------+------+------+------+------+------+------+------+------|------+------+------+------+------+-------------|
-     * | Ctrl | GUI  | Alt  |    Space    | Lower| Space||||||||||||||| Bksp | Raise|AltTab| GUI  |GUI_UP|GUI_DW|CLATDL| Ctrl |
+     * | Ctrl | GUI  | Alt  | Space| EISU | Lower| Space||||||||||||||| Bksp | Raise|AltTab| GUI  |GUI_UP|GUI_DW|CLATDL| Ctrl |
      * ,----------------------------------------------------------------------------------------------------------------------.
      */
   [_QWERTY] = LAYOUT(
@@ -97,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 			KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   , KC_DEL ,      KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_LBRC, KC_RBRC , KC_ENT ,
 			KC_LCTL, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,               KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT, KC_ENT  ,
 			KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   ,               ALT_SP , KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, _______ , KC_RSFT,
-			KC_LCTL, KC_LGUI, KC_LALT, KC_SPC , KC_SPC , LOWER  , KC_SPC ,      KC_BSPC, RAISE  , ALT_TB , KC_RGUI, GUI_RT , GUI_UP , CLALDL  , KC_RCTL
+			KC_LCTL, KC_LGUI, KC_LALT, KC_SPC , EISU   , LOWER  , KC_SPC ,      KC_BSPC, RAISE  , ALT_TB , KC_RGUI, GUI_RT , GUI_UP , CLALDL  , KC_RCTL
   ),
      /* Lower
      * ,----------------------------------------------------------------------------------------------------------------------.
@@ -187,21 +190,40 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case LOWER:
       if (record->event.pressed) {
+        lower_pressed = true;
+
         layer_on(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
       } else {
         layer_off(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
+
+        // http://okapies.hateblo.jp/entry/2019/02/02/133953
+        if (lower_pressed) {
+          register_code(KC_MINS);
+          unregister_code(KC_MINS);
+        }
+        lower_pressed = true;
       }
+ 
       return false;
       break;
     case RAISE:
       if (record->event.pressed) {
+        raise_pressed = true;
+
         layer_on(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
       } else {
         layer_off(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
+
+        // http://okapies.hateblo.jp/entry/2019/02/02/133953
+        if (raise_pressed) {
+          register_code(KC_ENT);
+          unregister_code(KC_ENT);
+        }
+        lower_pressed = true;
       }
       return false;
       break;
@@ -358,6 +380,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         register_code(KC_TAB);
       } else {
         unregister_code(KC_TAB);
+      }
+      break;
+    default:
+      if (record->event.pressed) {
+        // reset the flag
+        lower_pressed = false;
+        raise_pressed = false;
       }
       break;
   }
