@@ -84,7 +84,7 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /* Qwerty
      * ,----------------------------------------------------------------------------------------------------------------------.
-     * | ESC  |   1  |   2  |   3  |   4  |   5  |   6  ||||||||SD_GRV3|   7  |   8  |   9  |   0  |   -  |   =  |   \  |  `   |
+     * | ESCx2|   1  |   2  |   3  |   4  |   5  |   6  ||||||||SD_GRV3|   7  |   8  |   9  |   0  |   -  |   =  |   \  |  `   |
      * |------+------+------+------+------+------+------+--------------+------+------+------+------+------+------+------+------|
      * | Tab  |   Q  |   W  |   E  |   R  |   T  |K8SCTL||||||||   Y   |   U  |   I  |   O  |   P  |   [  |  ]   |    Enter    |
      * |------+------+------+------+------+------+------+--------------+------+------+------+------+------+------+------+      |
@@ -92,39 +92,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+---------------------+------+------+------+------+------+------+------+------|
      * | Shift|   Z  |   X  |   C  |   V  |AltSpc|||||||||||||||||||||||   B  |   N  |   M  |   ,  |   .  |   /  | ---- | Shift|
      * |-------------+------+------+------+------+------+------+-------+------|------+------+------+------+------+-------------|
-     * | Ctrl | GUI  | Alt  | Space|AltTab| Lower| Del  |||||||||||||||| Bksp | Raise| EISU | GUI  |GUI_UP|GUI_DW|CLATDL| Ctrl |
+     * | Ctrl | GUI  | Alt  |GUI_LT|AltTab| Lower| Del  |||||||||||||||| Bksp | Raise| EISU | GUI  |GUI_RT|GUI_UP|CLATDL| Ctrl |
      * ,----------------------------------------------------------------------------------------------------------------------.
      */
   [_QWERTY] = LAYOUT(
-			KC_ESC , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   ,      SD_GRV3, KC_7   , KC_8   , KC_9   , KC_0   , KC_MINS, KC_EQL  , KC_BSLS, KC_GRV,
+			ESCx2  , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   ,      SD_GRV3, KC_7   , KC_8   , KC_9   , KC_0   , KC_MINS, KC_EQL  , KC_BSLS, KC_GRV,
 			KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   , K8SCTL ,      KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_LBRC, KC_RBRC , KC_ENT ,
 			KC_LCTL, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,               KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT, KC_ENT  ,
 			KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V   , ALT_SP ,               KC_B   , KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, _______ , KC_RSFT,
-			KC_LCTL, KC_LGUI, KC_LALT, KC_SPC , ALT_TB , LOWER  , KC_DEL ,      KC_BSPC, RAISE  , EISU   , KC_RGUI, GUI_RT , GUI_UP , CLALDL  , KC_RCTL
+			KC_LCTL, KC_LGUI, KC_LALT, GUI_LT , ALT_TB , LOWER  , KC_DEL ,      KC_BSPC, RAISE  , EISU   , KC_RGUI, GUI_RT , GUI_UP , CLALDL  , KC_RCTL
   ),
      /* Lower
      * ,----------------------------------------------------------------------------------------------------------------------.
-     * | ESC  |  F1  |  F2  |  F3  |  F4  |  F5  |      ||||||||  F6  |  F7  |  F8  |  F9  | F10  | F11  | F12  |      |      |
+     * | ESCx2|  F1  |  F2  |  F3  |  F4  |  F5  |      ||||||||  F6  |  F7  |  F8  |  F9  | F10  | F11  | F12  |      |      |
      * |------+------+------+------+------+------+------+-------------+------+------+------+------+------+------+------+------|
-     * | Tab  |      |      |ALTSUP|ALTSDN|      |      ||||||||      |      |      |      |      |      |      |    Enter    |
+     * | Tab  |      |      |      |      |      |      ||||||||      |      |      |      |      |      |      |    Enter    |
      * |------+------+------+------+------+------+------+-------------+------+------+------+------+------+------+------+      |
-     * | Ctrl |      |      |      | EISU |      ||||||||||||||||||||||      |      |      |      |      |      |      |      |
+     * | Ctrl |      |      |      |      |      ||||||||||||||||||||||      |      |      |      |      |      |      |      |
      * |------+------+------+------+------+------+--------------------+------+------+------+------+------+------+------+------|
      * | Shift|      |      |      |      |      ||||||||||||||||||||||      |      |      |      |      |      |      | Shift|
      * |-------------+------+------+------+------+------+------+------+------|------+------+------+------+------+-------------|
-     * | Ctrl | GUI  | Alt  |    Space    | Lower| Space||||||||||||||| Bksp | Raise|AltTab| GUI  |GUI_UP|GUI_DW|CLATDL| Ctrl |
+     * | Ctrl | GUI  | Alt  |GUI_UP| Space| Lower| Space||||||||||||||| Bksp | Raise|AltTab| GUI  |GUI_UP|GUI_DW|CLATDL| Ctrl |
      * ,----------------------------------------------------------------------------------------------------------------------.
      */
   [_LOWER] = LAYOUT(
-			KC_ESC , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , _______,      KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12  , _______, _______,
-			KC_TAB , _______, _______, ALTSUP , ALTSDN , _______, _______,      _______, _______, _______, _______, _______, _______, _______ , KC_ENT ,
-			KC_LCTL, _______, _______, _______, EISU   , _______,               _______, _______, _______, _______, _______, _______, _______ , 
+			ESCx2  , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , _______,      KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12  , _______, _______,
+			KC_TAB , _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______ , KC_ENT ,
+			KC_LCTL, _______, _______, _______, _______, _______,               _______, _______, _______, _______, _______, _______, _______ , 
 			KC_LSFT, _______, _______, _______, _______, _______,               _______, _______, _______, _______, _______, _______, _______ , KC_RSFT,
-			KC_LCTL, KC_LGUI, KC_LALT, KC_SPC , KC_SPC , LOWER  , KC_SPC ,      KC_BSPC, RAISE  , ALT_TB , KC_RGUI, GUI_RT , GUI_UP , CLALDL  , KC_RCTL
+			KC_LCTL, KC_LGUI, KC_LALT, GUI_UP , KC_SPC , LOWER  , KC_SPC ,      KC_BSPC, RAISE  , ALT_TB , KC_RGUI, GUI_RT , GUI_UP , CLALDL  , KC_RCTL
   ),
      /* Raise
      * ,----------------------------------------------------------------------------------------------------------------------.
-     * | ESC  |  F1  |  F2  |  F3  |  F4  |  F5  |      ||||||||  F6  |  F7  |  F8  |  F9  | F10  | F11  | F12  |      |      |
+     * | ESCx2|  F1  |  F2  |  F3  |  F4  |  F5  |      ||||||||  F6  |  F7  |  F8  |  F9  | F10  | F11  | F12  |      |      |
      * |------+------+------+------+------+------+------+-------------+------+------+------+------+------+------+------+------|
      * | Tab  |      |      |      |      |      |      ||||||||      |MsLeft|MsDown| MsUp |MsRght|MsBtn1|MsBtn2|    Enter    |
      * |------+------+------+------+------+------+------+-------------+------+------+------+------+------+------+------+      |
@@ -136,11 +136,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,----------------------------------------------------------------------------------------------------------------------.
      */
   [_RAISE] = LAYOUT(
-			KC_ESC , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , _______,      KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12  , _______, _______,
+			ESCx2  , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , _______,      KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12  , _______, _______,
 			KC_TAB , _______, _______, _______, _______, _______, _______,      KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_BTN1, KC_BTN2, _______ , KC_ENT ,
 			KC_LCTL, _______, _______, _______, _______, _______,               KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, KC_ENT , KC_APP , _______ ,
 			KC_LSFT, _______, _______, _______, _______, _______,               KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_HOME, KC_END , _______ , KC_RSFT,
-			KC_LCTL, KC_LGUI, KC_LALT, KC_SPC , KC_SPC , LOWER  , KC_SPC ,      KC_BSPC, RAISE  , ALT_TB , KC_RGUI, GUI_RT , GUI_UP , CLALDL  , KC_RCTL
+			KC_LCTL, KC_LGUI, KC_LALT, GUI_UP , KC_SPC , LOWER  , KC_SPC ,      KC_BSPC, RAISE  , ALT_TB , KC_RGUI, GUI_RT , GUI_UP , CLALDL  , KC_RCTL
   ),
       /* Adjust
      * ,----------------------------------------------------------------------------------------------------------------------.
@@ -393,6 +393,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
+// static void render_otaku_split_logo(void) {
+//   static const char PROGMEM otaku_logo[] = {
+//     0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,0x88,0x89,0x8a,0x8b,0x8c,0x8d,0x8e,0x8f,0x90,0x91,0x92,0x93,0x94,
+//     0xa0,0xa1,0xa2,0xa3,0xa4,0xa5,0xa6,0xa7,0xa8,0xa9,0xaa,0xab,0xac,0xad,0xae,0xaf,0xb0,0xb1,0xb2,0xb3,0xb4,
+//     0xc0,0xc1,0xc2,0xc3,0xc4,0xc5,0xc6,0xc7,0xc8,0xc9,0xca,0xcb,0xcc,0xcd,0xce,0xcf,0xd0,0xd1,0xd2,0xd3,0xd4,0
+//   };
+//   oled_write_P(otaku_logo, false);
+//   oled_scroll_left();
+// }
+
 // Super ALT↯TAB
 // https://docs.qmk.fm/#/feature_macros?id=super-alt%e2%86%aftab
 void matrix_scan_user(void) {
@@ -404,6 +414,10 @@ void matrix_scan_user(void) {
   }
 }
 
+void matrix_init_user(void) {
+//  render_otaku_split_logo();
+}
+
 // Debug
 // https://docs.qmk.fm/#/newbs_testing_debugging?id=debugging
 void keyboard_post_init_user(void) {
@@ -412,10 +426,6 @@ void keyboard_post_init_user(void) {
   //debug_matrix=true;
   //debug_keyboard=true;
   //debug_mouse=true;
-}
-
-void matrix_init_user(void) {
-
 }
 
 void led_set_user(uint8_t usb_led) {
