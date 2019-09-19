@@ -301,9 +301,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         // https://qiita.com/chesscommands/items/ce2883ad0a0c6c27c8de#ss_tap
         // https://github.com/qmk/qmk_firmware/blob/6590f3c81155f5d5cfb59c5b8a28610d6f3207d0/quantum/send_string_keycodes.h
         SEND_STRING(SS_TAP(X_ESCAPE));
-        SEND_STRING(SS_TAP(X_ESCAPE));
       } else {
         // when keycode ESC is pressed two times 
+        SEND_STRING(SS_TAP(X_ESCAPE));
       }
       return false;
       break;
