@@ -210,20 +210,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case RAISE:
       if (record->event.pressed) {
-        raise_pressed = true;
-
         layer_on(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
       } else {
         layer_off(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
-
-        // http://okapies.hateblo.jp/entry/2019/02/02/133953
-        if (raise_pressed) {
-          register_code(KC_ENT);
-          unregister_code(KC_ENT);
-        }
-        lower_pressed = true;
       }
       return false;
       break;
