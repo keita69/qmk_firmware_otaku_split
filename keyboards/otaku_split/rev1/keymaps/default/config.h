@@ -67,9 +67,9 @@
 
 // Configuring mouse keys
 // https://docs.qmk.fm/#/feature_mouse_keys
-#define MOUSEKEY_DELAY	1
+#define MOUSEKEY_DELAY	40
 #define MOUSEKEY_INTERVAL	25
-#define MOUSEKEY_MAX_SPEED	20
+#define MOUSEKEY_MAX_SPEED	30
 #define MOUSEKEY_TIME_TO_MAX 30
 
 #define NO_ACTION_MACRO
