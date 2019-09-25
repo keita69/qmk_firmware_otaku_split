@@ -92,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+---------------------+------+------+------+------+------+------+------+------|
      * | Shift|   Z  |   X  |   C  |   V  |AltSpc|||||||||||||||||||||||   B  |   N  |   M  |   ,  |   .  |   /  | ---- | Shift|
      * |-------------+------+------+------+------+------+------+-------+------|------+------+------+------+------+-------------|
-     * | Ctrl | GUI  | Alt  | Alt  |AltTab| Lower| Del  |||||||||||||||| Bksp | Raise| EISU | GUI  |GUI_RT|GUI_UP|CLATDL| Ctrl |
+     * |GUI_LT| GUI  | Alt  | Alt  |AltTab| Lower| Del  |||||||||||||||| Bksp | Raise| EISU | GUI  |GUI_RT|GUI_UP|GUI_RT|CLALDL|
      * ,----------------------------------------------------------------------------------------------------------------------.
      */
   [_QWERTY] = LAYOUT(
@@ -100,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 			KC_TAB , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   , K8SCTL ,      KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , KC_LBRC, KC_RBRC , KC_ENT ,
 			KC_LCTL, KC_A   , KC_S   , KC_D   , KC_F   , KC_G   ,               KC_H   , KC_J   , KC_K   , KC_L   , KC_SCLN, KC_QUOT, KC_ENT  ,
 			KC_LSFT, KC_Z   , KC_X   , KC_C   , KC_V   , ALT_SP ,               KC_B   , KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, _______ , KC_RSFT,
-			KC_LCTL, KC_LGUI, KC_LALT, KC_LALT, ALT_TB , LOWER  , KC_DEL ,      KC_BSPC, RAISE  , EISU   , KC_RGUI, GUI_RT , GUI_UP , CLALDL  , KC_RCTL
+			GUI_LT , KC_LGUI, KC_LALT, KC_LALT, ALT_TB , LOWER  , KC_DEL ,      KC_BSPC, RAISE  , EISU   , KC_RGUI, GUI_RT , GUI_UP , GUI_RT  , CLALDL
   ),
      /* Lower
      * ,----------------------------------------------------------------------------------------------------------------------.
@@ -110,17 +110,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+-------------+------+------+------+------+------+------+------+      |
      * | Ctrl |      |      |      |      |      ||||||||||||||||||||||      |      |      |      |      |      |      |      |
      * |------+------+------+------+------+------+--------------------+------+------+------+------+------+------+------+------|
-     * | Shift|      |      |      |      |      ||||||||||||||||||||||      |      |      |      |      |      |      | Shift|
+     * | Shift|      |      |      |      |      ||||||||||||||||||||||      |      |      |      |      |      |      |      |
      * |-------------+------+------+------+------+------+------+------+------|------+------+------+------+------+-------------|
-     * | Ctrl | GUI  | Alt  |GUI_UP| Space| Lower| Space||||||||||||||| Bksp | Raise|AltTab| GUI  |GUI_UP|GUI_DW|CLATDL| Ctrl |
+     * |      |GUI_UP|      |      |      | Lower| Space||||||||||||||| Bksp | Raise|      |      |      |      |GUI_UP|      |
      * ,----------------------------------------------------------------------------------------------------------------------.
      */
   [_LOWER] = LAYOUT(
 			ESCx2  , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , _______,      KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12  , _______, _______,
 			KC_TAB , _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______ , KC_ENT ,
 			KC_LCTL, _______, _______, _______, _______, _______,               _______, _______, _______, _______, _______, _______, _______ , 
-			KC_LSFT, _______, _______, _______, _______, _______,               _______, _______, _______, _______, _______, _______, _______ , KC_RSFT,
-			KC_LCTL, KC_LGUI, KC_LALT, GUI_UP , KC_SPC , LOWER  , KC_SPC ,      KC_BSPC, RAISE  , ALT_TB , KC_RGUI, GUI_RT , GUI_UP , CLALDL  , KC_RCTL
+			KC_LSFT, _______, _______, _______, _______, _______,               _______, _______, _______, _______, _______, _______, _______ , _______,
+			_______, GUI_UP , _______, _______, _______, LOWER  , KC_SPC ,      KC_BSPC, RAISE  , _______, _______, _______, _______, GUI_UP  , _______
   ),
      /* Raise
      * ,----------------------------------------------------------------------------------------------------------------------.
@@ -130,17 +130,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------+------+-------------+------+------+------+------+------+------+------+      |
      * | Ctrl |      |      |      |      |      |||||||||||||||||||||| Left | Down |  Up  | Right| Enter|WinApp|      |      |
      * |------+------+------+------+------+------+--------------------+------+------+------+------+------+------+------+------|
-     * | Shift|      |      |      |      |      ||||||||||||||||||||||WhLeft|WhDown| WhUp |WhRght| Home | End  |      | Shift|
+     * | Shift|      |      |      |      |      ||||||||||||||||||||||WhLeft|WhDown| WhUp |WhRght| Home | End  |      |      |
      * |-------------+------+------+------+------+------+------+------+------|------+------+------+------+------+-------------|
-     * | Ctrl | GUI  | Alt  |    Space    | Lower| Space||||||||||||||| Bksp | Raise|AltTab| GUI  |GUI_UP|GUI_DW|CLATDL| Ctrl |
+     * |      |GUI_UP|      |             | Lower| Space||||||||||||||| Bksp | Raise|      |      |      |      |GUI_UP|      |
      * ,----------------------------------------------------------------------------------------------------------------------.
      */
   [_RAISE] = LAYOUT(
 			ESCx2  , KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , _______,      KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12  , _______, _______,
 			KC_TAB , _______, _______, _______, _______, _______, _______,      KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_BTN1, KC_BTN2, _______ , KC_ENT ,
 			KC_LCTL, _______, _______, _______, _______, _______,               KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, KC_ENT , KC_APP , _______ ,
-			KC_LSFT, _______, _______, _______, _______, _______,               KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_HOME, KC_END , _______ , KC_RSFT,
-			KC_LCTL, KC_LGUI, KC_LALT, GUI_UP , KC_SPC , LOWER  , KC_SPC ,      KC_BSPC, RAISE  , ALT_TB , KC_RGUI, GUI_RT , GUI_UP , CLALDL  , KC_RCTL
+			KC_LSFT, _______, _______, _______, _______, _______,               KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_HOME, KC_END , _______ , _______,
+			_______, GUI_UP , _______, _______, _______, LOWER  , KC_SPC ,      KC_BSPC, RAISE  , _______, _______, _______, _______, GUI_UP  , _______
   ),
       /* Adjust
      * ,----------------------------------------------------------------------------------------------------------------------.
