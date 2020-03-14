@@ -1,3 +1,24 @@
+# MyMemo
+
+## "/bin/sh: avr-gcc: コマンドが見つかりません"の対応
+### MSYS２Install 後パッケージアップデート実施
+https://blogs.osdn.jp/2018/01/30/msys2-mingw.html
+```
+pacman -Sy
+pacman -Su
+```
+### install tools
+```
+bash ~/git/qmk_firmware_otaku_split/util/qmk_install.sh
+find / | grep avr-gcc 
+echo '/usr/local/opt/avr-gcc@7/bin:$PATH' >> ~/.bash_profile
+```
+### MSYS２ 再起動後
+```
+pacman -Su
+make otaku_split/rev1:default:avrdude
+```
+
 # Quantum Mechanical Keyboard Firmware
 
 [![Current Version](https://img.shields.io/github/tag/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/tags)
